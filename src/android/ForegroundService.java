@@ -108,9 +108,9 @@ public class ForegroundService extends Service {
                     Thread.sleep(5000);
 					}catch(Exception e){}
 					// Create the toast
-					  toast = Toast.makeText(BackgroundMode.Activity, "hola", Toast.LENGTH_LONG);
+					  Toast toast2 = Toast.makeText(BackgroundMode.Activity, "hola", Toast.LENGTH_LONG);
 					  // Display toast
-					  toast.show();
+					  toast2.show();
 					
 
                 }
@@ -122,9 +122,9 @@ public class ForegroundService extends Service {
                     Thread.sleep(5000);
 					}catch(Exception e){}
 			
-					toast = Toast.makeText(BackgroundMode.Activity, "else",Toast.LENGTH_LONG);
+					Toast toast3 = Toast.makeText(BackgroundMode.Activity, "else",Toast.LENGTH_LONG);
 					// Display toast
-					toast.show();
+					toast3.show();
 		}
         return START_STICKY;
     }
