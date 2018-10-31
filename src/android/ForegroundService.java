@@ -104,8 +104,9 @@ public class ForegroundService extends Service {
                     clientEndPoint.sendMessage("{'event':'addChannel','channel':'ok_btccny_ticker'}");
 					*/
 
+					try{
                     Thread.sleep(5000);
-					
+					}catch(Exception e){}
 					// Create the toast
 					  toast = Toast.makeText(BackgroundMode.Activity, "hola", Toast.LENGTH_LONG);
 					  // Display toast
@@ -117,7 +118,9 @@ public class ForegroundService extends Service {
             workerThread.start();
         }else{
 			
-			Thread.sleep(5000);
+					try{
+                    Thread.sleep(5000);
+					}catch(Exception e){}
 			
 					toast = Toast.makeText(BackgroundMode.Activity, "else",Toast.LENGTH_LONG);
 					// Display toast
