@@ -80,6 +80,11 @@ public class ForegroundService extends Service {
 	@Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
+		
+		Toast toast = Toast.makeText(BackgroundMode.Activity, "inicio",Toast.LENGTH_LONG);
+					// Display toast
+					toast.show();
+		
         if(workerThread == null || !workerThread.isAlive()){
             workerThread = new Thread(new Runnable() {
                 public void run() {
@@ -99,10 +104,10 @@ public class ForegroundService extends Service {
                     clientEndPoint.sendMessage("{'event':'addChannel','channel':'ok_btccny_ticker'}");
 					*/
 
-                    //Thread.sleep(5000);
+                    Thread.sleep(5000);
 					
 					// Create the toast
-					  Toast toast = Toast.makeText(BackgroundMode.Activity, "hola",	Toast.LENGTH_LONG);
+					  toast = Toast.makeText(BackgroundMode.Activity, "hola", Toast.LENGTH_LONG);
 					  // Display toast
 					  toast.show();
 					
@@ -110,7 +115,14 @@ public class ForegroundService extends Service {
                 }
             });
             workerThread.start();
-        }
+        }else{
+			
+			Thread.sleep(5000);
+			
+					toast = Toast.makeText(BackgroundMode.Activity, "else",Toast.LENGTH_LONG);
+					// Display toast
+					toast.show();
+		}
         return START_STICKY;
     }
 
