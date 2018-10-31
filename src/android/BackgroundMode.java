@@ -62,6 +62,8 @@ public class BackgroundMode extends CordovaPlugin {
 
     // Service that keeps the app awake
     private ForegroundService service;
+	
+	public static Activity Activity = null;
 
     // Used to (un)bind the service to with the activity
     private final ServiceConnection connection = new ServiceConnection() {
@@ -227,6 +229,7 @@ public class BackgroundMode extends CordovaPlugin {
      */
     private void startService() {
         Activity context = cordova.getActivity();
+		BackgroundMode.Activity = context;
 
         if (isDisabled || isBind)
             return;

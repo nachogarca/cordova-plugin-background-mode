@@ -35,7 +35,6 @@ var exec    = require('cordova/exec'),
  * @return [ Void ]
  */
 exports.enable = function() {
-	alert("hola");
 	
     if (this.isEnabled())
         return;

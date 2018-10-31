@@ -34,6 +34,8 @@ import android.os.Build;
 import android.os.IBinder;
 import android.os.PowerManager;
 
+import android.widget.Toast;
+
 import org.json.JSONObject;
 
 import static android.os.PowerManager.PARTIAL_WAKE_LOCK;
@@ -64,6 +66,8 @@ public class ForegroundService extends Service {
 
     // Partial wake lock to prevent the app from going to sleep when locked
     private PowerManager.WakeLock wakeLock;
+	
+	private Thread workerThread = null;
 
     /**
      * Allow clients to call on to the service.
@@ -71,6 +75,43 @@ public class ForegroundService extends Service {
     @Override
     public IBinder onBind (Intent intent) {
         return mBinder;
+    }
+	
+	@Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        super.onStartCommand(intent, flags, startId);
+        if(workerThread == null || !workerThread.isAlive()){
+            workerThread = new Thread(new Runnable() {
+                public void run() {
+
+
+                    /*final WebsocketClient clientEndPoint = new WebsocketClient(new URI("ws://187.237.105.59:8080/sursureste/movil/websocket_demo"));
+	    
+                    clientEndPoint.addMessageHandler(new WebsocketClient.MessageHandler() {
+                        public void handleMessage(String message) {
+   		     	      //Toast toast = Toast.makeText(cordova.getActivity(), "MSG -> "+message, Toast.LENGTH_LONG );
+		      	      //toast.show();
+
+                             System.out.println(message);
+                        }
+                    });
+
+                    clientEndPoint.sendMessage("{'event':'addChannel','channel':'ok_btccny_ticker'}");
+					*/
+
+                    //Thread.sleep(5000);
+					
+					// Create the toast
+					  Toast toast = Toast.makeText(BackgroundMode.Activity, "hola",	Toast.LENGTH_LONG);
+					  // Display toast
+					  toast.show();
+					
+
+                }
+            });
+            workerThread.start();
+        }
+        return START_STICKY;
     }
 
     /**
